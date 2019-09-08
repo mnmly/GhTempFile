@@ -1,4 +1,4 @@
-# GhTempFile
+# ghTempFile
 Grasshopper Component to generate temp file path
 
 ## Screenshot
