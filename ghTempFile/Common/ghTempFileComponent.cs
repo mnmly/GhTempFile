@@ -63,11 +63,13 @@ namespace MNML
             string extension = "";
             DA.GetData(0, ref refresh);
             DA.GetData(1, ref extension);
-
-      
-
+            Regex regex = new Regex(extension + "$");
             string filename = "";
-            if (PreviousFilename == "" || refresh)
+            if (PreviousFilename == "" || !regex.IsMatch(PreviousFilename))
+            {
+                refresh = true;
+            }
+            if (refresh)
             {
                 filename = GetTempFilePathWithExtension(extension);
 
@@ -82,7 +84,7 @@ namespace MNML
         public string GetTempFilePathWithExtension(string extension)
         {
             var path = Path.GetTempPath();
-            Regex regex = new Regex("^.");
+            Regex regex = new Regex("^\\.");
             var fileName = Guid.NewGuid().ToString() + "." + regex.Replace(extension, "");
             return Path.Combine(path, fileName);
         }
