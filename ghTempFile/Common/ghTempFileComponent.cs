@@ -37,8 +37,8 @@ namespace MNML
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBooleanParameter("Refresh", "R", "Generate new temp file name", GH_ParamAccess.item, false);
             pManager.AddTextParameter("Extension", "E", "File extension", GH_ParamAccess.item, "tmp");
+            pManager.AddBooleanParameter("Refresh", "R", "Generate new temp file name", GH_ParamAccess.item, false);
             pManager[0].Optional = true;
             pManager[1].Optional = true;
         }
@@ -61,8 +61,8 @@ namespace MNML
 
             bool refresh = false;
             string extension = "";
-            DA.GetData(0, ref refresh);
-            DA.GetData(1, ref extension);
+            DA.GetData(0, ref extension);
+            DA.GetData(1, ref refresh);
             Regex regex = new Regex(extension + "$");
             string filename = "";
             if (PreviousFilename == "" || !regex.IsMatch(PreviousFilename))
