@@ -39,16 +39,16 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="RhinoCommon">
-      <HintPath>C:\Program Files\Rhino 6\System\rhinocommon.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Grasshopper">
-      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Applications\Rhinoceros.app\Contents\Frameworks\RhCore.framework\Versions\A\Resources\ManagedPlugIns\GrasshopperPlugin.rhp\Grasshopper.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="GH_IO">
-      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Applications\Rhinoceros.app\Contents\Frameworks\RhCore.framework\Versions\A\Resources\ManagedPlugIns\GrasshopperPlugin.rhp\GH_IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RhinoCommon">
+      <HintPath>..\..\..\..\..\..\Applications\Rhinoceros.app\Contents\Frameworks\RhCore.framework\Versions\A\Resources\RhinoCommon.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -66,8 +66,8 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(TargetName).gha"
-Erase "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>cp "$(TargetPath)" "$(TargetDir)$(TargetName).gha"
+rm "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
